@@ -5,6 +5,12 @@ from experiments.exp_long_term_forecasting_partial import Exp_Long_Term_Forecast
 import random
 import numpy as np
 
+import sys
+# Print the path of the active virtual environment
+#print(f"Virtual Environment Path: {sys.prefix}")
+#print("cuda.is_available:", torch.cuda.is_available())
+
+
 if __name__ == '__main__':
     fix_seed = 2023
     random.seed(fix_seed)
@@ -90,11 +96,22 @@ if __name__ == '__main__':
     args = parser.parse_args()
     args.use_gpu = True if torch.cuda.is_available() and args.use_gpu else False
 
+    if args.use_gpu:
+        if args.use_multi_gpu:
+            args.devices = args.devices.replace(' ', '')
+            device_ids = args.devices.split(',')
+            args.device_ids = [int(id_) for id_ in device_ids]
+            args.gpu = args.device_ids[0]
+        else:
+            # Use only one GPU specified by --gpu
+            args.device_ids = [args.gpu]  # Use the single GPU specified by the user
+    '''
     if args.use_gpu and args.use_multi_gpu:
         args.devices = args.devices.replace(' ', '')
         device_ids = args.devices.split(',')
         args.device_ids = [int(id_) for id_ in device_ids]
         args.gpu = args.device_ids[0]
+    '''
 
     print('Args in experiment:')
     print(args)

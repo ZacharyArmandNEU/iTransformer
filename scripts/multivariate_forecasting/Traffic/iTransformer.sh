@@ -2,6 +2,9 @@ export CUDA_VISIBLE_DEVICES=2
 
 model_name=iTransformer
 
+# Activate right venv
+conda activate ../../../venv  
+
 python -u run.py \
   --is_training 1 \
   --root_path ./dataset/traffic/ \
