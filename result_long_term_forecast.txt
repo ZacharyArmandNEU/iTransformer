@@ -7,3 +7,6 @@ mse:0.3980393707752228, mae:0.27160629630088806
 weather_96_96_iTransformer_custom_M_ft96_sl48_ll96_pl512_dm8_nh3_el1_dl512_df1_fctimeF_ebTrue_dtExp_projection_0  
 mse:0.17745588719844818, mae:0.2165186107158661
 
+weather_96_96_iTransformer_custom_M_ft96_sl48_ll96_pl512_dm8_nh3_el1_dl512_df1_fctimeF_ebTrue_dtExp_projection_0  
+mse:0.17644189298152924, mae:0.21542425453662872
+
